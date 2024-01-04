@@ -13,6 +13,7 @@ const validateAuthRequestBody: RequestHandler = (req, res, next) => {
     if (password.length < 6) {
         return res.status(400).json({ "error": "Password must be of atleast 6 characters" });
     }
+    req.body = { email, password }; // removing anything else sent in body, and removing white space
     next();
 }
 
